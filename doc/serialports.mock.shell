@@ -1,0 +1,2 @@
+# virtual ports pair
+socat -d -d pty,link=/tmp/ttyS0,raw,echo=0 pty,link=/tmp/ttyS1,raw,echo=0
