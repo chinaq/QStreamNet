@@ -31,7 +31,8 @@ namespace QStreamNet.Core.StreamApp
         public StreamPipeDelegate Build()
         {
             StreamPipeDelegate next = _ => { 
-                _logger.LogInformation("middleware flowed to 404");
+                // _logger.LogInformation("middleware flowed to 404");
+                // _logger.LogInformation("middleware flowed to End");
                 return Task.CompletedTask;
             };
             for (var c = _middlewares.Count - 1; c >= 0; c--) {
