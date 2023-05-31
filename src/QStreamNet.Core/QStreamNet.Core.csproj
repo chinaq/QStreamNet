@@ -6,8 +6,13 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <LangVersion>latest</LangVersion>
-    <!-- <EnablePreviewFeatures>True</EnablePreviewFeatures> -->
-    <!-- <GenerateRequiresPreviewFeaturesAttribute>False</GenerateRequiresPreviewFeaturesAttribute> -->
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageId>QStreamNet</PackageId>
+    <Version>0.1.1</Version>
+    <Authors>chinaq</Authors>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>

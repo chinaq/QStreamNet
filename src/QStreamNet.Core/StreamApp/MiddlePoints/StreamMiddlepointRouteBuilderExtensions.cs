@@ -1,4 +1,4 @@
-using System.Runtime.Versioning;
+using Microsoft.Extensions.DependencyInjection;
 using QStreamNet.Core.StreamApp.Middlewares;
 using TcpNet.Pipelines;
 
@@ -6,6 +6,26 @@ namespace QStreamNet.Core.StreamApp.MiddlePoints
 {
     public static class StreamMiddlepointRouteBuilderExtensions
     {
+
+        public static IStreamMiddlepointRouteBuilder MapMiddle<TCmdMiddleware>(this IStreamMiddlepointRouteBuilder builder)
+            where TCmdMiddleware : IStreamMiddleware, ICmdPoint
+        {
+            var middlepointRouteBuilder = builder;
+            if (middlepointRouteBuilder is null){
+                throw new InvalidOperationException($"{nameof(IStreamMiddlepointRouteBuilder)} is null.");
+            }
+            // delegate
+            var appBuilder = builder.CreateApplicationBuilder();
+            appBuilder.UseMiddleware<TCmdMiddleware>();
+            var middle = appBuilder.ApplicationServices.GetRequiredService<TCmdMiddleware>();
+            var requestDelegate = appBuilder.Build();
+            // points
+            var middlepoints = middlepointRouteBuilder.DataSource.Middlepoints;
+            middlepoints.Add(new StreamMiddlepoint(requestDelegate, middle.CmdData, middle.CmdName));
+            return builder;
+        }
+
+
         public static IStreamMiddlepointRouteBuilder Map<TCmdMiddleware>(this IStreamMiddlepointRouteBuilder builder)
             where TCmdMiddleware : IStreamMiddleware, ICmdMiddlepoint
         {
@@ -17,11 +37,6 @@ namespace QStreamNet.Core.StreamApp.MiddlePoints
             var requestDelegate = builder.CreateApplicationBuilder().UseMiddleware<TCmdMiddleware>().Build();
             // points
             var middlepoints = middlepointRouteBuilder.DataSource.Middlepoints;
-            // var data = TCmdMiddleware.CmdData;
-            // Console.Write("TCmd: ");
-            // Console.Write(TCmdMiddleware.CmdData);
-            // Console.Write(TCmdMiddleware.CmdName);
-            // Console.WriteLine();
             middlepoints.Add(new StreamMiddlepoint(requestDelegate, TCmdMiddleware.CmdData, TCmdMiddleware.CmdName));
             return builder;
         }
@@ -29,7 +44,6 @@ namespace QStreamNet.Core.StreamApp.MiddlePoints
 
         public static IStreamMiddlepointRouteBuilder Map<TCmdMiddleware>(this IStreamMiddlepointRouteBuilder builder, byte[] cmdData, string cmdName)
             where TCmdMiddleware : IStreamMiddleware
-            // where TCmdMiddleware : IStreamMiddleware, ICmdMiddlepoint
         {
             var middlepointRouteBuilder = builder;
             if (middlepointRouteBuilder is null){
@@ -56,21 +70,8 @@ namespace QStreamNet.Core.StreamApp.MiddlePoints
             }
             var middlepoints = middlepointRouteBuilder.DataSource.Middlepoints;
             middlepoints.Add(new StreamMiddlepoint(requestDelegate, cmd, name));
-            // builder.CreateApplicationBuilder().UseMiddleware<>().Build()
             return builder;
         }
 
-
-        // public static IStreamMiddlepointRouteBuilder MapEnd(
-        //     this IStreamMiddlepointRouteBuilder builder,
-        //     StreamPipeDelegate requestDelegate)
-        // {
-        //     var middlepointRouteBuilder = builder;
-        //     if (middlepointRouteBuilder is null){
-        //         throw new InvalidOperationException($"{nameof(IStreamMiddlepointRouteBuilder)} is null.");
-        //     }
-        //     // middlepointRouteBuilder.DataSource.MiddleEndpoint = new StreamMiddlepoint(requestDelegate, null, null);
-        //     return builder;
-        // }
     }
 }
