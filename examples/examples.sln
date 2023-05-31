@@ -5,8 +5,6 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiddlewareRoutes", "MiddlewareRoutes\MiddlewareRoutes.csproj", "{B9A94C15-CB57-43E6-9323-16810418B571}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiddlewareRoutesProperties", "MiddlewareRoutesProperties\MiddlewareRoutesProperties.csproj", "{8022CD65-084A-49F5-B120-714655AB0656}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,9 +18,5 @@ Global
 		{B9A94C15-CB57-43E6-9323-16810418B571}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B9A94C15-CB57-43E6-9323-16810418B571}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B9A94C15-CB57-43E6-9323-16810418B571}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8022CD65-084A-49F5-B120-714655AB0656}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8022CD65-084A-49F5-B120-714655AB0656}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8022CD65-084A-49F5-B120-714655AB0656}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8022CD65-084A-49F5-B120-714655AB0656}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
