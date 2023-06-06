@@ -40,12 +40,22 @@ namespace QStreamNet.Core.SerialPorts
             var timeout = TimeSpan.FromMilliseconds(ReadTimeout);
             // read
             byte[] readBuffer = new byte[bufferSize];
-            // var readSize = 0;
-            // var readSize = await stream.ReadAsync(readBuffer, 0, readBuffer.Length, cancellationToken).WaitAsync(timeout);
             var readSize = await stream.ReadAsync(readBuffer, 0, readBuffer.Length).WaitAsync(timeout, cancellationToken);
             var result = new byte[readSize];
             Array.Copy(readBuffer, result, readSize);
             return result;
+        }
+
+        public String ReadLine()
+        {
+            _serialPort.ReadTimeout = ReadTimeout;
+            return _serialPort.ReadLine();
+        }
+
+        public void WriteLine(string message)
+        {
+            _serialPort.WriteTimeout = WriteTimeout;
+            _serialPort.WriteLine(message);
         }
     }
 }

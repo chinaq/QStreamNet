@@ -52,6 +52,11 @@ namespace QStreamNet.Core.Util
             return StrHexToBytes(StrSep(hexStr));
         }
 
+        public byte[] StrCharsToBytes(string str)
+        {
+            return Encoding.ASCII.GetBytes(str);
+        }
+
 
 
 

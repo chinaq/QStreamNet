@@ -15,6 +15,8 @@ namespace QStreamNet.Test.Core.Util
         }
 
 
+        #region int
+
         [TestMethod]
         public void HexStrToInt_Positive()
         {
@@ -53,8 +55,6 @@ namespace QStreamNet.Test.Core.Util
             Assert.AreEqual(-268435188, result);
         }
 
-
-
         // Bytes2ToInt
         [TestMethod]
         public void Bytes2ToInt()
@@ -64,27 +64,10 @@ namespace QStreamNet.Test.Core.Util
             Assert.AreEqual(43554, result);
         }
 
-
-        ///////////////////////////
-        // Bytes4ToLong
-        ///////////////////////////
-        [TestMethod]
-        public void Bytes4ToLong()
-        {
-            byte[] bytes = new byte[] { 0x00, 0x11, 0xFD, 0x41 };
-            long result = qDataHandler.Bytes4ToLong(bytes, 0);
-            Assert.AreEqual(1178945, result);
-        }
-
-        [TestMethod]
-        public void Bytes4ToLong_Len_Gt_4()
-        {
-            byte[] bytes = new byte[] { 0x00, 0x00, 0x11, 0xFD, 0x41 };
-            long result = qDataHandler.Bytes4ToLong(bytes, 1);
-            Assert.AreEqual(1178945, result);
-        }
+        #endregion
 
 
+        #region float
 
         ///////////////////////////
         //Bytes4ToFloat
@@ -97,8 +80,10 @@ namespace QStreamNet.Test.Core.Util
             Assert.AreEqual(17.79, result, 0.1);
         }
 
+        #endregion
 
 
+        #region Chars
 
         ///////////////////////////
         // BytesToStrChars
@@ -127,6 +112,20 @@ namespace QStreamNet.Test.Core.Util
             Assert.AreEqual("8J", result);
         }
 
+        [TestMethod]
+        public void StrCharsToBytes(){
+            string str = "8J";
+            byte[] result = qDataHandler.StrCharsToBytes(str);
+            byte[] expected = new byte[] { 0x38, 0x4A };
+            CollectionAssert.AreEqual(expected, result);
+        }
+
+
+        #endregion
+
+
+        #region CheckSum
+
         ///////////////////////////
         // CheckSum
         ///////////////////////////
@@ -136,6 +135,30 @@ namespace QStreamNet.Test.Core.Util
             byte[] bytes = new byte[] { 0x00, 0x11, 0x22, 0x55 };
             byte result = qDataHandler.BytesCheckSum(bytes, 1, 2);
             Assert.AreEqual(0x33, result);
+        }
+
+        #endregion
+
+
+        #region long
+
+        ///////////////////////////
+        // Bytes4ToLong
+        ///////////////////////////
+        [TestMethod]
+        public void Bytes4ToLong()
+        {
+            byte[] bytes = new byte[] { 0x00, 0x11, 0xFD, 0x41 };
+            long result = qDataHandler.Bytes4ToLong(bytes, 0);
+            Assert.AreEqual(1178945, result);
+        }
+
+        [TestMethod]
+        public void Bytes4ToLong_Len_Gt_4()
+        {
+            byte[] bytes = new byte[] { 0x00, 0x00, 0x11, 0xFD, 0x41 };
+            long result = qDataHandler.Bytes4ToLong(bytes, 1);
+            Assert.AreEqual(1178945, result);
         }
 
 
@@ -170,9 +193,10 @@ namespace QStreamNet.Test.Core.Util
             Assert.AreEqual(1223, result);
         }
 
+        #endregion
 
 
-
+        #region string
 
         ///////////////////////////
         // str hex to bytes
@@ -191,6 +215,8 @@ namespace QStreamNet.Test.Core.Util
             var result = qDataHandler.StrSep(str);
             Assert.AreEqual("24 12 34 56 78 ", result);
         }
+
+        #endregion
 
 
         #region time
@@ -266,8 +292,6 @@ namespace QStreamNet.Test.Core.Util
         }
 
         #endregion
-
-
 
 
         #region aes

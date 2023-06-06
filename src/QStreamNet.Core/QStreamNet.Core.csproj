@@ -10,7 +10,7 @@
 
   <PropertyGroup>
     <PackageId>QStreamNet</PackageId>
-    <Version>0.1.1</Version>
+    <Version>0.1.2</Version>
     <Authors>chinaq</Authors>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
