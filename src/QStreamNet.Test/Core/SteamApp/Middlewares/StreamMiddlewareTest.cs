@@ -137,6 +137,5 @@ namespace QStreamNet.Test.Core.SteamApp.Middlewares
                 await next(context);
             }
         }
-
     }
 }
