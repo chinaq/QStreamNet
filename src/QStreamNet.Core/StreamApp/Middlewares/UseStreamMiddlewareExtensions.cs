@@ -5,7 +5,7 @@ namespace QStreamNet.Core.StreamApp.Middlewares
 {
     public static class UseStreamMiddlewareExtensions
     {
-        public static IStreamApplicationBuilder UseMiddleware<TMiddleware>(this IStreamApplicationBuilder app) where TMiddleware : IStreamMiddleware
+        public static IStreamApplicationBuilder UseMiddleware<TMiddleware>(this IStreamApplicationBuilder app, params object[]? args) where TMiddleware : IStreamMiddleware
         {
             return app.Use(async (context, next) => {
                 var middlewareFactory = context.Services!.GetService<IStreamMiddlewareFactory>();
@@ -14,7 +14,7 @@ namespace QStreamNet.Core.StreamApp.Middlewares
                     throw new InvalidOperationException($"no {nameof(IStreamMiddlewareFactory)}");
                 }
 
-                var middleware = middlewareFactory.Create<TMiddleware>();
+                var middleware = middlewareFactory.Create<TMiddleware>(args);
                 if (middleware == null)
                 {
                     // The factory returned null, it's a broken implementation
