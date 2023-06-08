@@ -6,7 +6,10 @@ namespace QStreamNet.Core.StreamApp.Contexts
         Task<byte[]> ReadAsync(CancellationToken cancellationToken = default);
 
         void WriteLine(string message);
-        String ReadLine();
+        string ReadLine();
+
+        Task WriteLineAsync(string message);
+        Task<string?> ReadLineAsync(CancellationToken cancellationToken = default);
 
         int ReadTimeout { get; set; }
         int WriteTimeout { get; set; }

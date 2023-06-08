@@ -4,8 +4,8 @@ namespace QStreamNet.Core.StreamApp
 {
     public class StreamApplicationBuilderFactory : IStreamApplicationBuilderFactory
     {
-        private IServiceProvider _services;
-        private ILoggerFactory _loggerFactory;
+        private readonly IServiceProvider _services;
+        private readonly ILoggerFactory _loggerFactory;
 
         public StreamApplicationBuilderFactory(IServiceProvider services, ILoggerFactory loggerFactory)
         {

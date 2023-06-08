@@ -5,9 +5,8 @@ namespace QStreamNet.Core.SerialPorts
 {
     public class SpClient : IStreamClient
     {
-        private SerialPort _serialPort;
+        private readonly SerialPort _serialPort;
 
-        // public int ReadInterval { get; set; } = 10;
         public int ReadTimeout { get; set; } = -1;
         public int WriteTimeout { get; set; } = -1;
 
@@ -40,7 +39,8 @@ namespace QStreamNet.Core.SerialPorts
             var timeout = TimeSpan.FromMilliseconds(ReadTimeout);
             // read
             byte[] readBuffer = new byte[bufferSize];
-            var readSize = await stream.ReadAsync(readBuffer, 0, readBuffer.Length).WaitAsync(timeout, cancellationToken);
+            var readSize = await stream.ReadAsync(readBuffer, 0, readBuffer.Length)
+                .WaitAsync(timeout, cancellationToken);
             var result = new byte[readSize];
             Array.Copy(readBuffer, result, readSize);
             return result;
@@ -57,5 +57,29 @@ namespace QStreamNet.Core.SerialPorts
             _serialPort.WriteTimeout = WriteTimeout;
             _serialPort.WriteLine(message);
         }
+
+        public async Task WriteLineAsync(string message)
+        {
+            // try {
+                var stream = _serialPort.BaseStream;
+                var timeout = TimeSpan.FromMilliseconds(WriteTimeout);
+                var writerStream = new StreamWriter(stream);
+                await writerStream.WriteLineAsync(message).WaitAsync(timeout);
+                await writerStream.FlushAsync();
+            // } catch (Exception e) {
+            //     Console.WriteLine(e);
+            //     throw;
+            // }
+        }
+
+        public async Task<string?> ReadLineAsync(CancellationToken cancellationToken = default)
+        {
+            var stream = _serialPort.BaseStream;
+            var readerStream = new StreamReader(stream);
+            var timeout = TimeSpan.FromMilliseconds(ReadTimeout);
+            string? result = await readerStream.ReadLineAsync().WaitAsync(timeout, cancellationToken);
+            return result;
+        }
+
     }
 }

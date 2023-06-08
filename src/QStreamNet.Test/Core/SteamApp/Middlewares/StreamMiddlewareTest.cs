@@ -124,7 +124,7 @@ namespace QStreamNet.Test.Core.SteamApp.Middlewares
 
         class MiddlewareWithParams : IStreamMiddleware
         {
-            private string _whoami;
+            private readonly string _whoami;
 
             public MiddlewareWithParams(string whoami)
             {

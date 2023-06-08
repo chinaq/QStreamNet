@@ -10,9 +10,9 @@ namespace QStreamNet.Test.Core.Spclients
     [TestClass]
     public class SpClientTest
     {
-        private string _port0;
-        private string _port1;
-        private QDataHandler _dh;
+        private readonly string _port0;
+        private readonly string _port1;
+        private readonly QDataHandler _dh;
 
         public SpClientTest()
         {
@@ -83,7 +83,7 @@ namespace QStreamNet.Test.Core.Spclients
         }
 
         [TestMethod]
-        public async Task WriteLine_ReadLineAsync()
+        public async Task WriteLine_ReadLine_Sync()
         {
             // Arrange
             // ports
@@ -115,6 +115,44 @@ namespace QStreamNet.Test.Core.Spclients
             // Assert
             resultC1.Should().BeEquivalentTo("Hello");
             resultC0.Should().BeEquivalentTo("World");
+        }
+
+
+        [TestMethod, Timeout(1000)]
+        public async Task WriteLine_ReadLine_Async()
+        {
+            // Arrange
+            // ports
+            var port0 = new SerialPort(_port0);
+            var port1 = new SerialPort(_port1);
+            port0.Open(); port0.BaseStream.Flush(); port0.Close();
+            port1.Open(); port1.BaseStream.Flush(); port1.Close();
+            // client 0
+            IStreamClient client0 = new SpClient(port0);
+            client0.Open();
+            client0.ReadTimeout = 200;
+            client0.WriteTimeout = 100;
+            // client 1
+            IStreamClient client1 = new SpClient(port1);
+            client1.Open();
+            client1.ReadTimeout = 200;
+            client1.WriteTimeout = 100;
+
+            // Act
+            await client1.WriteAsync(_dh.StrCharsToBytes("World\n"));
+            var resultC0 = await client0.ReadLineAsync();
+
+            await client0.WriteLineAsync("Hello");
+            var resultC1 = await client1.ReadLineAsync();
+
+            // clear
+            client0.Close();
+            client1.Close();
+
+            // Assert
+            resultC1.Should().BeEquivalentTo("Hello");
+            resultC0.Should().BeEquivalentTo("World");
+            // Assert.Fail();
         }
     }
 }
