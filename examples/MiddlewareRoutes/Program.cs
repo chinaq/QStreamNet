@@ -49,8 +49,9 @@ var app = builder.Build();
 Console.WriteLine();
 Console.WriteLine("### WRITE TIME ###");
 // set context
-var context = new StreamContext();
-context.Services = services.CreateScope().ServiceProvider;
+var context = new StreamContext {
+    Services = services.CreateScope().ServiceProvider
+};
 context.Set(new OutPoint {Name = TimeWriteMiddleware.CmdName});
 context.Set(new InPoint {Name = TimeWriteCheckMiddleware.CmdName});
 // run
@@ -59,8 +60,9 @@ await app(context);
 
 Console.WriteLine();
 Console.WriteLine("### READ TIME ###");
-context = new StreamContext();
-context.Services = services.CreateScope().ServiceProvider;
+context = new StreamContext {
+    Services = services.CreateScope().ServiceProvider
+};
 context.Set(new OutPoint {Name = TimeReadMiddleware.CmdName});
 context.Set(new InPoint {Name = TimeReadCheckMiddleware.CmdName});
 // run
@@ -69,8 +71,9 @@ await app(context);
 
 Console.WriteLine();
 Console.WriteLine("### UNKNOWN ###");
-context = new StreamContext();
-context.Services = services.CreateScope().ServiceProvider;
+context = new StreamContext {
+    Services = services.CreateScope().ServiceProvider
+};
 context.Set(new OutPoint {Name = TimeReadMiddleware.CmdName});
 context.Set(new InPoint {Name = "UNKNOWN"});
 // run

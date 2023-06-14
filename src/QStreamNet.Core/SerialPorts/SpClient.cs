@@ -39,7 +39,7 @@ namespace QStreamNet.Core.SerialPorts
             var timeout = TimeSpan.FromMilliseconds(ReadTimeout);
             // read
             byte[] readBuffer = new byte[bufferSize];
-            var readSize = await stream.ReadAsync(readBuffer, 0, readBuffer.Length)
+            var readSize = await stream.ReadAsync(readBuffer, 0, readBuffer.Length, cancellationToken)
                 .WaitAsync(timeout, cancellationToken);
             var result = new byte[readSize];
             Array.Copy(readBuffer, result, readSize);
@@ -49,7 +49,8 @@ namespace QStreamNet.Core.SerialPorts
         public String ReadLine()
         {
             _serialPort.ReadTimeout = ReadTimeout;
-            return _serialPort.ReadLine();
+            var result = _serialPort.ReadLine();
+            return result.Replace("\r", "").Replace("\n", "");
         }
 
         public void WriteLine(string message)

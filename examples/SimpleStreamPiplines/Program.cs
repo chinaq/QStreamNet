@@ -1,35 +1,8 @@
-# QStreamNet
+﻿using Microsoft.Extensions.DependencyInjection;
+using QStreamNet.Core.StreamApp;
+using QStreamNet.Core.StreamApp.Middlewares;
+using TcpNet.Pipelines;
 
-QStreamNet is a dotnet library for streaming data though pipelines. It is inspired by ASP.NET Core's middleware pipeline. It is a simple, lightweight and fast library that allows you to build a pipeline for processing data. It is also flexible enough to allow you to build a pipeline with a single step.
-
-## Installation
-``` bash
-dotnet add package QStreamNet
-```
-
-## Features
-### Stream Client
-It works with Stream Clients like 
-- TCP
-- UDP
-- Serial Port 
-
-It can be used to build a pipeline for processing data.
-
-## Piplines
-It works with
-- Services
-- Middlewares
-- Routes
-
-## Server & Client
-It works on both 
-- server side
-- client side
-
-## Usage
-pipeline example:
-``` cs
 Console.WriteLine("Hello, QStream!");
 
 // services 
@@ -48,13 +21,6 @@ var app = builder.Build();
 // run it
 await app(context);
 
-// OUTPUT:
-//
-// Hello, QStream!
-// SimpleMiddleware
-// Easy Middleware
-// End Middleware
-
 
 // a simple class
 class SimpleMiddleware : IStreamMiddleware
@@ -65,4 +31,3 @@ class SimpleMiddleware : IStreamMiddleware
         await next(context);
     }
 }
-```
