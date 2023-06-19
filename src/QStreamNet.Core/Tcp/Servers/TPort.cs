@@ -1,4 +1,4 @@
-namespace TcpNet.Tcps
+namespace QStreamNet.Core.Tcp.Servers
 {
     public class TPort
     {

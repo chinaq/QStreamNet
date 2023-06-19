@@ -6,9 +6,10 @@ using Microsoft.Extensions.Hosting;
 using QStreamNet.Core.StreamApp;
 using QStreamNet.Core.StreamApp.Contexts;
 using QStreamNet.Core.StreamApp.Middlewares;
-using TcpNet.Tcps;
+using QStreamNet.Core.Tcp.Hosts;
+using QStreamNet.Core.Tcp.Servers;
 
-namespace TcpNet.Pipelines
+namespace QStreamNet.Core.Tcp.Hosts
 {
     public class TcpApplicationBuilder
     {

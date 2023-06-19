@@ -1,6 +1,6 @@
-using TcpNet.Pipelines;
+using QStreamNet.Core.StreamApp.Middlewares;
 
-namespace TcpNet.Tcps
+namespace QStreamNet.Core.Tcp.Servers
 {
     public interface ITServer
     {

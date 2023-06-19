@@ -2,9 +2,10 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using QStreamNet.Core.StreamApp;
-using TcpNet.Tcps;
+using QStreamNet.Core.StreamApp.Middlewares;
+using QStreamNet.Core.Tcp.Servers;
 
-namespace TcpNet.Pipelines
+namespace QStreamNet.Core.Tcp.Hosts
 {
     public class TcpHostService : IHostedService
     {

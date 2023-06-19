@@ -1,8 +1,7 @@
 using Microsoft.Extensions.DependencyInjection;
-using QStreamNet.Core.StreamApp.Contexts;
 using QStreamNet.Core.StreamApp.EndPoints;
 
-namespace TcpNet.Pipelines
+namespace QStreamNet.Core.StreamApp.Contexts
 {
     public class StreamContext : IDisposable
     {

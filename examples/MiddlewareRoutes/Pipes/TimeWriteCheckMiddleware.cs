@@ -1,10 +1,10 @@
+using QStreamNet.Core.StreamApp.Contexts;
 using QStreamNet.Core.StreamApp.MiddlePoints;
-using TcpNet.Pipelines;
+using QStreamNet.Core.StreamApp.Middlewares;
 
 namespace MiddlewareRoutes.Pipes
 {
     public class TimeWriteCheckMiddleware : IStreamMiddleware, ICmdMiddlepoint
-    // public class TimeWriteCheckMiddleware : IStreamMiddleware
     {
         public static string CmdName => "检查写时间";
 

@@ -1,7 +1,7 @@
 using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
-using TcpNet.Pipelines;
 using QStreamNet.Core.StreamApp;
+using QStreamNet.Core.StreamApp.Contexts;
 
 namespace QStreamNet.Test.Core.SteamApp.Apps
 {

@@ -1,13 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using QStreamNet.Core.StreamApp;
+using QStreamNet.Core.StreamApp.Contexts;
 using QStreamNet.Core.StreamApp.Middlewares;
-using TcpNet.Pipelines;
 
 namespace QStreamNet.Test.Core.SteamApp.Middlewares
 {

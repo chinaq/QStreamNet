@@ -4,10 +4,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging.Abstractions;
 using QStreamNet.Core.StreamApp;
 using QStreamNet.Core.StreamApp.Contexts;
-using TcpNet.Pipelines;
-using TcpNet.Tcps;
+using QStreamNet.Core.StreamApp.Middlewares;
+using QStreamNet.Core.Tcp.Servers;
 
-namespace QStreamNet.Test.Core.Tcp.Servers
+namespace QStreamNet.Test.Core.Tcp
 {
     [TestClass]
     public class TServerTest

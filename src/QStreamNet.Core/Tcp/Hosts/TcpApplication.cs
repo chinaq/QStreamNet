@@ -3,8 +3,9 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using QStreamNet.Core.StreamApp;
 using QStreamNet.Core.StreamApp.EndPoints;
+using QStreamNet.Core.StreamApp.Middlewares;
 
-namespace TcpNet.Pipelines
+namespace QStreamNet.Core.Tcp.Hosts
 {
     public class TcpApplication : IHost, IStreamApplicationBuilder, IStreamEndpointRouteBuilder, IAsyncDisposable
     {

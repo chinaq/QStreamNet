@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using QStreamNet.Core.StreamApp;
+using QStreamNet.Core.StreamApp.Contexts;
 using QStreamNet.Core.StreamApp.Middlewares;
-using TcpNet.Pipelines;
 
 Console.WriteLine("Hello, QStream!");
 

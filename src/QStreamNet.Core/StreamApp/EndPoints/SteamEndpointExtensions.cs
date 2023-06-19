@@ -1,7 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
-using TcpNet.Pipelines;
 
 namespace QStreamNet.Core.StreamApp.EndPoints
 {

@@ -1,6 +1,5 @@
 using Microsoft.Extensions.DependencyInjection;
 using QStreamNet.Core.StreamApp.Middlewares;
-using TcpNet.Pipelines;
 
 namespace QStreamNet.Core.StreamApp.MiddlePoints
 {

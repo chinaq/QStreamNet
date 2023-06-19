@@ -3,11 +3,9 @@ using System.Net.Sockets;
 using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
 using QStreamNet.Core.StreamApp.Contexts;
-using TcpNet.Tcps;
-using Moq;
+using QStreamNet.Core.Tcp.Clients;
 
-
-namespace QStreamNet.Test.Core.Tcp.Servers
+namespace QStreamNet.Test.Core.Tcp
 {
     [TestClass]
     public class TClientTest

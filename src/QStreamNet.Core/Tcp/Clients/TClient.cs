@@ -3,10 +3,10 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
 using Nito.AsyncEx;
 using QStreamNet.Core.StreamApp.Contexts;
+using QStreamNet.Core.StreamApp.Middlewares;
 using QStreamNet.Core.Util;
-using TcpNet.Pipelines;
 
-namespace TcpNet.Tcps
+namespace QStreamNet.Core.Tcp.Clients
 {
     public class TClient : ITClient
     {

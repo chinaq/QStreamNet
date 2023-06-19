@@ -2,9 +2,9 @@ using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
 using Moq;
 using QStreamNet.Core.StreamApp;
+using QStreamNet.Core.StreamApp.Contexts;
 using QStreamNet.Core.StreamApp.EndPoints;
 using QStreamNet.Core.StreamApp.Middlewares;
-using TcpNet.Pipelines;
 
 namespace QStreamNet.Test.Core.SteamApp.Endpoints
 {

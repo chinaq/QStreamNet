@@ -1,5 +1,3 @@
-using TcpNet.Pipelines;
-
 namespace QStreamNet.Core.StreamApp.Middlewares
 {
     public interface IStreamMiddlewareFactory

@@ -1,14 +1,12 @@
-using System.Collections.Concurrent;
 using System.Net;
 using System.Net.Sockets;
 using System.Text.Json;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Abstractions;
 using QStreamNet.Core.StreamApp.Contexts;
-using QStreamNet.Core.Tcp.Servers;
-using TcpNet.Pipelines;
+using QStreamNet.Core.StreamApp.Middlewares;
+using QStreamNet.Core.Tcp.Clients;
 
-namespace TcpNet.Tcps
+namespace QStreamNet.Core.Tcp.Servers
 {
     public class TServer : ITServer
     {

@@ -1,4 +1,4 @@
-using TcpNet.Pipelines;
+using QStreamNet.Core.StreamApp.Middlewares;
 
 namespace QStreamNet.Core.StreamApp.EndPoints
 {

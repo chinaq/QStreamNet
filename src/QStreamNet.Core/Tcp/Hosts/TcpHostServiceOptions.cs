@@ -1,6 +1,6 @@
 using QStreamNet.Core.StreamApp;
 
-namespace TcpNet.Pipelines
+namespace QStreamNet.Core.Tcp.Hosts
 {
     public class TcpHostServiceOptions
     {
